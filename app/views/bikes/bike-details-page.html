@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Bike Details" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Image src="{{ bikeImage }}" class="w-full h-48 rounded-lg" />
+            
+            <GridLayout rows="auto, auto" columns="*, auto" class="mt-4">
+                <Label text="{{ bikeName }}" class="text-2xl font-bold" row="0" col="0" />
+                <Label text="{{ batteryLevel }}%" class="text-lg text-green-600" row="0" col="1" />
+                
+                <Label text="{{ bikeLocation }}" class="text-gray-600" row="1" col="0" colSpan="2" />
+            </GridLayout>
+            
+            <StackLayout class="mt-6">
+                <Label text="Pricing" class="text-xl font-semibold mb-2" />
+                <Label text="{{ pricingDetails }}" class="text-gray-600" textWrap="true" />
+            </StackLayout>
+            
+            <Button text="{{ isAvailable ? 'Start Ride' : 'Bike Unavailable' }}" 
+                    tap="onStartRideTap" 
+                    isEnabled="{{ isAvailable }}"
+                    class="{{ isAvailable ? 'bg-primary' : 'bg-gray-400' }} text-white font-bold py-4 rounded-lg mt-6" />
+        </StackLayout>
+    </ScrollView>
+</Page>

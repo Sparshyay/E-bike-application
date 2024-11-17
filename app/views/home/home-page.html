@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      xmlns:maps="@nativescript/google-maps"
+      navigatingTo="onNavigatingTo">
+    <ActionBar title="E-Bike Home">
+        <ActionItem ios.position="right" android.position="actionBar" 
+                   text="Refresh" tap="onRefreshTap" />
+    </ActionBar>
+    
+    <GridLayout rows="*, auto">
+        <!-- Map View -->
+        <ContentView row="0">
+            <maps:MapView latitude="{{ userLocation.latitude }}" 
+                         longitude="{{ userLocation.longitude }}"
+                         zoom="15"
+                         id="map"
+                         mapReady="onMapReady" />
+        </ContentView>
+
+        <!-- Bottom Navigation -->
+        <GridLayout row="1" columns="*, *, *, *" class="bg-white p-4 border-t border-gray-200">
+            <StackLayout col="0" tap="onHomeTab" class="text-center">
+                <Label text="🏠" class="text-2xl" />
+                <Label text="Home" class="text-xs" />
+            </StackLayout>
+            <StackLayout col="1" tap="onBikesTab" class="text-center">
+                <Label text="🚲" class="text-2xl" />
+                <Label text="Bikes" class="text-xs" />
+            </StackLayout>
+            <StackLayout col="2" tap="onWalletTab" class="text-center">
+                <Label text="💳" class="text-2xl" />
+                <Label text="Wallet" class="text-xs" />
+            </StackLayout>
+            <StackLayout col="3" tap="onProfileTab" class="text-center">
+                <Label text="👤" class="text-2xl" />
+                <Label text="Profile" class="text-xs" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>
